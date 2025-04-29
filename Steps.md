@@ -103,7 +103,27 @@ find "${PROTO_ROOT}" -name "*.proto" | while read proto; do
     "$proto"
 done
 
-## 5. Reestrutura o arquivo main.m que ja deve existir no projeto (foi criado pelo xcode quando voce criou o projeto)
+## 5. Verificar se o proto buffer esta instalado:
+
+### 5.1 Execute no terminal:
+
+protoc --version
+
+### Caso apareca algo como
+
+libprotoc 3.21.12
+
+### Significa que voce tem o protoc instalado e podemos seguir para o passo 6, caso contrario execute:
+
+brew install protobuf
+
+### Entao verifique novamente se a versao do protoc para garantir que ele foi instalado.
+
+## 6. Vamo criar o script para rodar o projeto e adicionar no xoode
+
+
+
+## 9. Reestrutura o arquivo main.m que ja deve existir no projeto (foi criado pelo xcode quando voce criou o projeto)
 
 #import <Foundation/Foundation.h>
 #import "Hello.pbrpcobjc.h"
