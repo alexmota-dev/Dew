@@ -86,15 +86,22 @@ No Xcode:
 
     Clique no projeto → vá em Build Phases → + New Run Script Phase.
 
+    Renomei o Script para Generate Protobuf Files
+
     Arraste o script para ficar antes de Compile Sources.
 
     No novo Run Script, cole:
 
+# Define onde estão os arquivos .proto
 PROTO_ROOT="${SRCROOT}/Protos"
+
+# Define onde gerar os arquivos gerados
 OUTPUT_DIR="${SRCROOT}/Generated"
 
+# Garante que a pasta Generated existe
 mkdir -p "${OUTPUT_DIR}"
 
+# Executa o protoc usando as opções corretas
 find "${PROTO_ROOT}" -name "*.proto" | while read proto; do
   protoc \
     --proto_path="${PROTO_ROOT}" \
@@ -102,6 +109,7 @@ find "${PROTO_ROOT}" -name "*.proto" | while read proto; do
     --objc-grpc_out="${OUTPUT_DIR}" \
     "$proto"
 done
+
 
 ## 5. Verificar se o proto buffer esta instalado:
 
