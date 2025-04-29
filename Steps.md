@@ -80,3 +80,78 @@ message HelloReply {
   string message = 1;
 }
 
+## 4. Configure a geração automática do .proto
+
+No Xcode:
+
+    Clique no projeto → vá em Build Phases → + New Run Script Phase.
+
+    Arraste o script para ficar antes de Compile Sources.
+
+    No novo Run Script, cole:
+
+PROTO_ROOT="${SRCROOT}/Protos"
+OUTPUT_DIR="${SRCROOT}/Generated"
+
+mkdir -p "${OUTPUT_DIR}"
+
+find "${PROTO_ROOT}" -name "*.proto" | while read proto; do
+  protoc \
+    --proto_path="${PROTO_ROOT}" \
+    --objc_out="${OUTPUT_DIR}" \
+    --objc-grpc_out="${OUTPUT_DIR}" \
+    "$proto"
+done
+
+## 5. Reestrutura o arquivo main.m que ja deve existir no projeto (foi criado pelo xcode quando voce criou o projeto)
+
+#import <Foundation/Foundation.h>
+#import "Hello.pbrpcobjc.h"
+
+@interface Greeter : Hello_Greeter
+@end
+
+@implementation Greeter
+
+- (void)sayHelloWithRequest:(Hello_HelloRequest *)request handler:(void(^)(Hello_HelloReply *_Nullable response, NSError *_Nullable error))handler {
+    Hello_HelloReply *reply = [Hello_HelloReply message];
+    reply.message = [NSString stringWithFormat:@"Olá, %@!", request.name];
+    handler(reply, nil);
+}
+
+@end
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        // Configurar o servidor
+        GRPCMutableCallOptions *options = [[GRPCMutableCallOptions alloc] init];
+        options.transport = GRPCDefaultTransportImplList.core_insecure;
+        
+        NSString *address = @"localhost:50051";
+        
+        Greeter *greeter = [[Greeter alloc] init];
+        GRPCServer *server = [[GRPCServer alloc] initWithHandlers:@{@"hello.Greeter/SayHello": greeter}];
+        [server startWithHost:@"0.0.0.0" port:50051];
+
+        NSLog(@"Servidor rodando em %@", address);
+        
+        // Configurar o cliente
+        Hello_GreeterService *client = [Hello_GreeterService serviceWithHost:address callOptions:options];
+        Hello_HelloRequest *request = [Hello_HelloRequest message];
+        request.name = @"Alek";
+
+        [client sayHelloWithRequest:request handler:^(Hello_HelloReply * _Nullable response, NSError * _Nullable error) {
+            if (response) {
+                NSLog(@"Resposta do servidor: %@", response.message);
+            } else {
+                NSLog(@"Erro: %@", error);
+            }
+            exit(0);
+        }];
+        
+        [[NSRunLoop currentRunLoop] run];
+    }
+    return 0;
+}
+
+## 6. Passo 6
