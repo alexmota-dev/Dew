@@ -14,3 +14,9 @@
 ### ✅ macOS 11.0.1
 ### ✅ Xcode 12.4 instalado (confira: xcodebuild -version)
 ### ✅ CocoaPods instalado
+
+## 1.1 Instalar o cocoapods caso náo tenha instalado:
+
+sudo gem install cocoapods
+
+
