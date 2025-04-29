@@ -19,7 +19,64 @@
 
 sudo gem install cocoapods
 
-## 2.  Instalar o plugin do protoc para Objective-C
+## 2. Crie um projeto no xcode
 
-### Agora vamos instalar manualmente o protoc-gen-objc e o protoc-gen-objc-grpc, porque o CocoaPods usa esses plugins para gerar os arquivos do grpc apartir do arquivo .proto
+### Abra o Xcode.
+
+### Crie um novo projeto ➔ macOS App ➔ "Command Line Tool" (para ser mais simples).
+
+### Nomeie como HelloGrpcObjC.
+
+### Escolha Objective-C como linguagem.
+
+
+## 3.Criar e executar podfile
+
+### Dentro desse projeto crie um arquivo Podfile:
+
+nano Podfile
+
+### Adicione o codigo abaixo ao arquivo e apos isso faca ctrl+x, y e Enter.
+
+platform :macos, '11.0'
+
+target 'HelloGrpcObjC' do
+  use_frameworks!
+  
+  pod 'gRPC-ProtoRPC'
+  pod 'Protobuf'
+end
+
+### Agora vamos fazer a isntalacao do podfile
+
+pod install
+
+### Isso deve gerar um .xcworkspace, vamos abrir esse cara no xocde
+
+open HelloGrpcObjC.xcworkspace
+
+## 3. Crie o seu arquivo .proto
+
+Crie uma pasta no projeto chamada Protos/ e adicione um arquivo chamado hello.proto:
+
+mkdir protos
+nano hello.proto
+
+Adicione o seguinte codigo ao hello.proto e apos isso faca ctrl+x, y e Enter.
+
+syntax = "proto3";
+
+package hello;
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
 
