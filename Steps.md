@@ -19,4 +19,7 @@
 
 sudo gem install cocoapods
 
+## 2.  Instalar o plugin do protoc para Objective-C
+
+### Agora vamos instalar manualmente o protoc-gen-objc e o protoc-gen-objc-grpc, porque o CocoaPods usa esses plugins para gerar os arquivos do grpc apartir do arquivo .proto
 
