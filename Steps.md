@@ -85,6 +85,42 @@ echo 'export PATH="/usr/local/lib/ruby/gems/3.4.0/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
+## 1.4 Instalar o Git:
+### 1.3.1 Execute o script
+
+```bash
+brew install git
+```
+
+Verifique a nova versao
+
+```bash
+which git
+```
+
+Se você ainda vir /usr/bin/git, então a nova versão não está no seu PATH
+
+Para forcar o uso do novo git execute esse script
+
+```bash
+export PATH="/usr/local/bin:$PATH"
+```
+
+Verifique novamente
+```bash
+git --version
+which git
+```
+
+Voce deve ver algo como
+
+```bash
+git version 2.49.0
+/usr/local/bin/git
+```
+
+
+
 Depois disso verifique novamente a versao do cocoapods.
 ## 2. Crie um projeto no xcode
 
