@@ -9,8 +9,8 @@
 
 ## 1. Pré-requisitos
 
-### ✅ macOS 11.0.1
-### ✅ Xcode 12.4 instalado (confira: xcodebuild -version)
+### ✅ macOS 15.2
+### ✅ Xcode 16.1 instalado (confira: xcodebuild -version)
 ### ✅ CocoaPods instalado
 ### ✅ Ruby Instalado
 ### ✅ Homebrew Instalado
