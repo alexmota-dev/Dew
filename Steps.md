@@ -80,7 +80,8 @@ Isso deve retornar algo como
 Adicione esse caminho ao seu PATH com
 
 ```bash
-echo 'export PATH="/usr/local/lib/ruby/gems/3.4.0/gems/cocoapods-1.16.2/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/usr/local/lib/ruby/gems/3.4.0/bin:$PATH"' >> ~/.zshrc
+
 source ~/.zshrc
 ```
 
