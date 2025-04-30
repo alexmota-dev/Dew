@@ -37,14 +37,21 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ```bash
 ruby -v
 ```
-
-### 1.2.2 Instale o ruby
+### Caso a versao seja inferior a versao 3.X.X ou caso nao tenha o ruby instalado, execute o script
 
 ```bash
 brew install ruby
 ```
 
-## 1.3 Instalar o cocoapods caso náo tenha instalado:
+### Agora verifique novamente a versao do ruby, caso ainda seja a mesma versao antiga, e necessario dizer para o sistema usar a versao mais recent.
+### Nesse caso execute o script
+
+```bash
+echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
+
+## 1.3 Instalar o cocoapods:
+### 1.3.1 Execute o script
 
 ```bash
 sudo gem install cocoapods
