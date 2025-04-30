@@ -40,11 +40,15 @@ ruby -v
 
 ### 1.2.2 Instale o ruby
 
+```bash
 brew install ruby
+```
 
 ## 1.3 Instalar o cocoapods caso náo tenha instalado:
 
+```bash
 sudo gem install cocoapods
+```
 
 ## 2. Crie um projeto no xcode
 
