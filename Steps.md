@@ -1,4 +1,4 @@
-# Como criar uma aplicação gRPC simples usando Objective-C (no macOS 11.0.1 com Xcode 12.4)
+# Como criar uma aplicação gRPC simples usando Objective-C
 
 ## O que vamos fazer ?
 ### Um servidor e um cliente de terminal que trocam uma simples mensagem (HelloRequest e HelloReply) usando gRPC.
