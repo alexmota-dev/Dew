@@ -57,6 +57,34 @@ echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc && source ~/.zshr
 sudo gem install cocoapods
 ```
 
+Certifique-se de que o cocoapods foi instalado e esta visivel no sistem
+Verifique sua versao executano script:
+
+```bash
+pod --version
+```
+
+Caso ele nao retorne nenhuma versao, signfica que o cocoapods foi instalado, mas nao foi adicionado no PATH, por isso nao esta visivel no sistema
+Descubra onde o cocoapods foi instalado, para isso execute o script abaixo:
+
+```bash
+sudo find /usr -name pod -type f -perm +111 2>/dev/null | grep cocoapods
+```
+
+Isso deve retornar algo como
+
+```bash
+/usr/local/lib/ruby/gems/3.4.0/gems/cocoapods-1.16.2/bin/pod
+```
+
+Adicione esse caminho ao seu PATH com
+
+```bash
+echo 'export PATH="/usr/local/lib/ruby/gems/3.4.0/gems/cocoapods-1.16.2/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Depois disso verifique novamente a versao do cocoapods.
 ## 2. Crie um projeto no xcode
 
 ### Abra o Xcode.
