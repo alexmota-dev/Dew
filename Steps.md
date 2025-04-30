@@ -120,10 +120,10 @@ git version 2.49.0
 
 ### 2.1 Crie o projeto HelloGrpcObjC
 
-Abra o Xcode.
-Crie um novo projeto ➔ macOS App ➔ "Command Line Tool" (para ser mais simples).
-Nomeie como HelloGrpcObjC.
-Escolha Objective-C como linguagem.
+Abra o Xcode. <br>
+Crie um novo projeto ➔ macOS App ➔ "Command Line Tool" (para ser mais simples). <br>
+Nomeie como HelloGrpcObjC. <br>
+Escolha Objective-C como linguagem. <br>
 
 ### 2.2 Criar e executar podfile
 
