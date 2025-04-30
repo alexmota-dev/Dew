@@ -123,23 +123,24 @@ git version 2.49.0
 
 ## 2. Crie um projeto no xcode
 
-### Abra o Xcode.
+### 2.1 Crie o projeto HelloGrpcObjC
 
-### Crie um novo projeto ➔ macOS App ➔ "Command Line Tool" (para ser mais simples).
+Abra o Xcode.
+Crie um novo projeto ➔ macOS App ➔ "Command Line Tool" (para ser mais simples).
+Nomeie como HelloGrpcObjC.
+Escolha Objective-C como linguagem.
 
-### Nomeie como HelloGrpcObjC.
+### 2.2 Criar e executar podfile
 
-### Escolha Objective-C como linguagem.
+Dentro desse projeto crie um arquivo Podfile:
 
-
-## 3.Criar e executar podfile
-
-### Dentro desse projeto crie um arquivo Podfile:
-
+```bash
 nano Podfile
+```
 
-### Adicione o codigo abaixo ao arquivo e apos isso faca ctrl+x, y e Enter.
+Adicione o codigo abaixo ao arquivo e apos isso faca ctrl+x, y e Enter.
 
+```bash
 platform :macos, '11.0'
 
 target 'HelloGrpcObjC' do
@@ -148,24 +149,32 @@ target 'HelloGrpcObjC' do
   pod 'gRPC-ProtoRPC'
   pod 'Protobuf'
 end
+```
 
 ### Agora vamos fazer a isntalacao do podfile
 
+```bash
 pod install
+```
 
 ### Isso deve gerar um .xcworkspace, vamos abrir esse cara no xocde
 
+```bash
 open HelloGrpcObjC.xcworkspace
+```
 
 ## 3. Crie o seu arquivo .proto
 
 Crie uma pasta no projeto chamada Protos/ e adicione um arquivo chamado hello.proto:
 
+```bash
 mkdir protos
 nano hello.proto
+```
 
 Adicione o seguinte codigo ao hello.proto e apos isso faca ctrl+x, y e Enter.
 
+```bash
 syntax = "proto3";
 
 package hello;
@@ -181,6 +190,7 @@ message HelloRequest {
 message HelloReply {
   string message = 1;
 }
+```
 
 ## 4. Configure a geração automática do .proto
 
@@ -194,16 +204,27 @@ No Xcode:
 
     No novo Run Script, cole:
 
-# Define onde estão os arquivos .proto
-PROTO_ROOT="${SRCROOT}/Protos"
+Define onde estão os arquivos .proto
 
-# Define onde gerar os arquivos gerados
+```bash
+PROTO_ROOT="${SRCROOT}/Protos"
+```
+
+Define onde gerar os arquivos gerados
+
+```bash
 OUTPUT_DIR="${SRCROOT}/Generated"
+```
 
 # Garante que a pasta Generated existe
+
+```bash
 mkdir -p "${OUTPUT_DIR}"
+```
 
 # Executa o protoc usando as opções corretas
+
+```bash
 find "${PROTO_ROOT}" -name "*.proto" | while read proto; do
   protoc \
     --proto_path="${PROTO_ROOT}" \
@@ -211,21 +232,27 @@ find "${PROTO_ROOT}" -name "*.proto" | while read proto; do
     --objc-grpc_out="${OUTPUT_DIR}" \
     "$proto"
 done
-
+```
 
 ## 5. Verificar se o proto buffer esta instalado:
 
 ### 5.1 Execute no terminal:
 
+```bash
 protoc --version
+```
 
 ### Caso apareca algo como
 
+```bash
 libprotoc 3.21.12
+```
 
 ### Significa que voce tem o protoc instalado e podemos seguir para o passo 6, caso contrario execute:
 
+```bash
 brew install protobuf
+```
 
 ### Entao verifique novamente se a versao do protoc para garantir que ele foi instalado.
 
@@ -235,6 +262,7 @@ brew install protobuf
 
 ## 9. Reestrutura o arquivo main.m que ja deve existir no projeto (foi criado pelo xcode quando voce criou o projeto)
 
+```bash
 #import <Foundation/Foundation.h>
 #import "Hello.pbrpcobjc.h"
 
@@ -283,5 +311,4 @@ int main(int argc, const char * argv[]) {
     }
     return 0;
 }
-
-## 6. Passo 6
+```
