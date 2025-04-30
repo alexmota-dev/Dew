@@ -1,5 +1,3 @@
-# Create file
-
 # Como criar uma aplicação gRPC simples usando Objective-C (no macOS 11.0.1 com Xcode 12.4)
 
 ## O que vamos fazer ?
@@ -14,8 +12,37 @@
 ### ✅ macOS 11.0.1
 ### ✅ Xcode 12.4 instalado (confira: xcodebuild -version)
 ### ✅ CocoaPods instalado
+### ✅ Ruby Instalado
+### ✅ Homebrew Instalado
 
-## 1.1 Instalar o cocoapods caso náo tenha instalado:
+## 1.1 Instalar o Homebrew:
+### 1.1.1 Execute o seguinte comando no terminal: 
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+### 1.1.2 Depois adicione o Homebrew ao seu terminal (Intel ou ARM, depende do resultado de uname -m):
+```bash
+# Para processadores Intel:
+echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/usr/local/bin/brew shellenv)"
+
+# Para processadores Apple Silicon (M1, M2, M3):
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+## 1.2 Instalar o ruby:
+### 1.2.1 Verifique a versao do seu ruby
+
+```bash
+ruby -v
+```
+
+### 1.2.2 Instale o ruby
+
+brew install ruby
+
+## 1.3 Instalar o cocoapods caso náo tenha instalado:
 
 sudo gem install cocoapods
 
