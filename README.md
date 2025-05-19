@@ -11,6 +11,7 @@ distribuir tarefas entre dispositivos móveis. O projeto busca otimizar a efici�
 as tarefas com base na capacidade dos dispositivos.
 
 ## 📌 Versao Inicial (Monolitica)
-Nesa versao a aplicacao e fetia com Swift rodando apenas no macOS, o objetivo e que em um futuro breve rode um disposivito <br> 
+Nesa versao a aplicacao e fetia com Swift rodando apenas no macOS, nessa versao o sistema pode se comportar como servidor ou como client <br> isso pode ser determinado atraves do menu que sera exibido no terminal, alem de que nessa versao as mensagem enviado pelo cliente para o servidor ja sao personalizaveis <br>
+o objetivo e que em um futuro breve rode um disposivito <br> 
 iphone (iOS)  utilizando o Swift.
 
